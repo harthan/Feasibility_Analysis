@@ -1,33 +1,53 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 from tabulate import tabulate
 
+fields = [
+    {"label": "Powierzchnia całej działki", "name": "site_size", "unit": "m2"},
+    {"label": "Powierzchnia terenu pod zabudowę", "name": "base", "unit": "m2"},
+    {"label": "Powierzchnia terenu pod którym może być podziemie", "name": "underground_area", "unit": "m2"},
+    {"label": "Współczynnik zabudowy", "name": "building_factor", "unit": "%"},
+    {"label": "Współczynnik intensywności zabudowy", "name": "intensity_factor", "unit": ""},
+    {"label": "Wysokość budynku", "name": "building_height", "unit": "m"},
+    {"label": "Współczynnik powierzchni biologicznie-czynnej", "name": "green_area_percentage", "unit": "%"},
+    {"label": "Współczynnik powierzchni biologicznie-czynnej bezpośrednio na gruncie", "name": "green_area_100_percentage", "unit": "%"},
+    {"label": "Liczba wymaganych miejsc postojowych na mieszkanie", "name": "parking_place_M", "unit": ""},
+    {"label": "Liczba wymaganych miejsc postojowych na 1000m2 powierzchni usługowej", "name": "parking_place_B", "unit": ""},
+    {"label": "Liczba kondygnacji podziemnych", "name":  "number_of_underground_floors", "unit": ""},
+    {"label": "Funkcja (mieszkalna lub biurowa)", "name": "destiny", "unit": ""}]
 
+# Tworzymy słownik, w którym kluczami są nazwy pól, a wartościami są wprowadzone przez użytkownika wartości.
+data = {}
 
+for field in fields:
+    prompt = f"{field['label']} [{field['unit']}]: "
+    value = input(prompt)
+    data[field['name']] = value
 
-print("""Bardzo proszę podać następujące dane z MPZP,
-jeśli któraś z danych nie została podana, proszę wpisać 0""")
+# Tworzymy listę, która będzie składać się z wierszy tabeli, a następnie wyświetlamy tabelę za pomocą funkcji `tabulate`.
+table_rows = []
+for field in fields:
+    label = field['label']
+    value = data.get(field['name'], "0")
+    unit = field['unit']
+    table_rows.append([label, value, unit])
 
-site_size = float(input("Jaka jest powierzchnia całej działki"))
+print(tabulate(table_rows, headers=["Parametr", "Wartość", "Jednostka"]))
+# konwersja danych tekstowych na liczbowe
 
-base = float(input("""Jaka jest powierzchnia terenu na dzialce,
-który przeznaczony jest w MPZP pod zabudowę"""))
-base_underground = float(input("""jaka jest powierzchnia terenu na dzialce,
-pod którym może być podziemie (wewnątrz nieprzekraczalnych linii zabudowy"""))
-building_factor = int(input("ile procent wynosi współczynnik zabudowy"))
-intensity_factor = float(input("jaki jest współczynnik zabudowy"))
-building_height = float(input("jaka jest wysokość budynku"))
-green_area = int(input("""ile procent wynosi współczynnik powierzchni
-biologicznie-czynnej""")) * base / 100
-green_area_100 = int(input("""ile procent wynosi współczynnik powierzchni
-biologicznie-czynnej bezpośrednio na gruncie""")) * base / 100
-parking_place_M = float(input("""ile jest wymaganych miesjc
-postojowych na mieszkanie"""))
-parking_place_B = float(input("""ile jest wymaganych miesjc
-postojowych na 100m2 powierzchni"""))
-destiny = input("""jeśli ma to być funkcja mieszkalna wpisz M,
-jeśli mają to być biura wpisz B""")
-number_of_underground_floors = int(input("ile chcesz wybudować poziomów podziemnych"))
+site_size = float(table_rows[0][1])
+base = float(table_rows[1][1])
+base_underground = float(table_rows[2][1])
+building_factor = float(table_rows[3][1])
+intensity_factor = float(table_rows[4][1])
+building_height = float(table_rows[5][1])
+green_area_percentage = float(table_rows[6][1])
+green_area = green_area_percentage * base / 100
+green_area_100_percentage = float(table_rows[7][1])
+green_area_100 = green_area_100_percentage * base / 100
+parking_place_M = float(table_rows[8][1])
+parking_place_B = float(table_rows[9][1])
+number_of_underground_floors = float(table_rows[10][1])
+destiny = table_rows[11][1]
 
 # PRZYKŁADOWE DANE TESTOWE:
 # site_size = 6380
@@ -130,6 +150,7 @@ def calculate_area_parkings_on_the_ground():
 #   received_green =  building_area() * 0.85 * 0.5 + (base - base_underground) * 0.8 + (base_underground - building_area()) * 0,85 * 0,5 - area_parkings_on_the_ground =
 #   = 0,425 * building_area() + 0,8 * base - 0,8 * base_underground + 0,425 * base_underground - 0,425 * building_area() - area_parkings_on_the_ground =
 #   = 0,8 * base - 0,375 * base_underground - area_parkings_on_the_ground
+
 def check_bioactiv_area():
     global received_green
 
@@ -146,7 +167,6 @@ def check_bioactiv_area():
         masz wystarczająco powierzchni biologicznie czynnej""")
 
     print("base_underground = ", base_underground)
-
 
     # jeżeli brakuje pow. biol czynnej musimy ją zwiększyć poprzez:
     # zmniejszenie parkingu podziemnego (underground/2) tak aby po za jego granicami była powierzchnia biol. czynna w 100% a nie 50%
@@ -185,8 +205,6 @@ def revision():
     print('number of parkings =', number_of_parkings)
     return base_underground, number_of_parkings
 
-
-
 building_area()
 total_area()
 count_floors()
@@ -204,8 +222,6 @@ check_capability_for_underground_parking()
 calculate_area_parkings_on_the_ground()
 check_bioactiv_area()
 revision()
-
-
 
 if 'M' in destiny:
     table = [
