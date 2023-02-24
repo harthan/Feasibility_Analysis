@@ -1,5 +1,4 @@
-import pandas as pd
-from tabulate import tabulate
+from tabulate import tabulate, SEPARATING_LINE
 
 fields = [
     {"label": "Powierzchnia całej działki", "name": "site_size", "unit": "m2"},
@@ -31,7 +30,7 @@ for field in fields:
     unit = field['unit']
     table_rows.append([label, value, unit])
 
-print(tabulate(table_rows, headers=["Parametr", "Wartość", "Jednostka"]))
+print(tabulate(table_rows, headers=["Parametr", "Wartość", "Jednostka"]),"\n")
 # konwersja danych tekstowych na liczbowe
 
 site_size = float(table_rows[0][1])
@@ -67,10 +66,6 @@ if 'M' in destiny:
     h = 3
 if 'B' in destiny:
     h = 3.5
-else:
-    print('źle określona funkcja, nie da się wykonać analizy')
-    # trzeba wrócić do wypełnienia tabeli na nowo
-
 
 def building_area():   # Building_area = wyliczenie powierzchni zabudowy
     global BA
@@ -223,41 +218,41 @@ calculate_area_parkings_on_the_ground()
 check_bioactiv_area()
 revision()
 
+
+
 if 'M' in destiny:
     table = [
     ['powierzchnia działki', ' ', str(site_size) + 'm2', ' '],
-    ['współczynnik zabudowy -> powierzchnia zabudowy', str(building_factor) +'%',  str(BA)+'m2', str(BA/site_size*100)+'%'],
-    ['intensywność zabudowy -> powierzchnia całkowita', str(intensity_factor), str(TA)+'m2', str(TA/site_size)],
+    ['współczynnik zabudowy -> powierzchnia zabudowy', str(building_factor) +'%',  str(BA)+'m2', str(round((BA/site_size*100), 2))+'%'],
+    ['intensywność zabudowy -> powierzchnia całkowita', str(intensity_factor), str(TA)+'m2', str(round((TA/site_size), 2))],
     ['powierzchnia biologicznie czynna', str(green_area * 100 / base)+'%', str(round(received_green, 2))+'m2', str(round((received_green / base * 100), 2)) + '%'],
     ['wymagana zieleń na gruncie', str(green_area_100 * 100 / base) +'%', str(green_area_100) + 'm2', str(round((green_area_100 / base * 100), 2)) +'%'],
     ['wysokość zabudowy', str(building_height)+'m', str(floors_amount)+' kondygnacji', str(building_height)+'m'],
     ['ilość mieszkań', ' ', int(number_of_parkings / parking_place_M), ' '],
-    ['średnia wielkość mieszkania', ' ', str(round((PUM/(number_of_parkings/ parking_place_M )),2)) + 'm2 lub większe', ' '],
+    ['średnia wielkość mieszkania', ' ', str(round((PUM/(number_of_parkings/ parking_place_M )),2)) + 'm2 lub większe', ' '], SEPARATING_LINE,
     ['ilość miejsc postojowych razem', str(parking_place_M) + ' na mieszkanie', round(number_of_parkings, 2), str(parking_place_M) + ' na mieszkanie'],
     ['w tym ilość miejsc postojowych na poziomie terenu', '', int(area_parkings_on_the_ground // 12), ''],
-    ['w tym ilość miejsc postojowych w parkingu podziemnym', '', int(base_underground // (35 // number_of_underground_floors)), ''],
+    ['w tym ilość miejsc postojowych w parkingu podziemnym', '', int(base_underground // (35 // number_of_underground_floors)), ''], SEPARATING_LINE,
     ['ilość kondygnacji podziemnych', '', number_of_underground_floors, ''],
-    ['współczynnik do liczenia PUM', ' ', 0.69, ' '],
+    ['współczynnik do liczenia PUM', ' ', 0.69, ' '], SEPARATING_LINE,
     ['PUM', '',str(PUM) + 'm2', '']]
 
 
 elif 'B' in destiny:
     table = [
     ['powierzchnia działki', ' ', str(site_size) + 'm2', ' '],
-    ['współczynnik zabudowy -> powierzchnia zabudowy', str(building_factor) +'%',  str(BA)+'m2', str(BA/site_size*100)+'%'],
-    ['intensywność zabudowy -> powierzchnia całkowita', str(intensity_factor), str(TA)+'m2', str(TA/site_size)],
+    ['współczynnik zabudowy -> powierzchnia zabudowy', str(building_factor) +'%',  str(BA)+'m2', str(round((BA/site_size*100), 2))+'%'],
+    ['intensywność zabudowy -> powierzchnia całkowita', str(intensity_factor), str(TA)+'m2', str(round((TA/site_size), 2))],
     ['powierzchnia biologicznie czynna', str(green_area * 100 / base)+'%', str(round(received_green, 2))+'m2', str(round((received_green / base * 100), 2)) + '%'],
     ['wymagana zieleń na gruncie', str(green_area_100 * 100 / base) +'%', str(green_area_100) + 'm2', str(round((green_area_100 / base * 100), 2)) +'%'],
     ['wysokość zabudowy', str(building_height)+'m', str(floors_amount)+' kondygnacji', str(building_height)+'m'],
-     ['ilość miejsc postojowych razem', str(parking_place_B) + ' na 1000m2', round(number_of_parkings, 2), str(parking_place_B) + ' na 1000m2'],
+    ['ilość miejsc postojowych razem', str(parking_place_B) + ' na 1000m2', round(number_of_parkings, 2), str(parking_place_B) + ' na 1000m2'], SEPARATING_LINE,
     ['w tym ilość miejsc postojowych na poziomie terenu', '', int(area_parkings_on_the_ground // 12), ''],
-    ['w tym ilość miejsc postojowych w parkingu podziemnym', '', int(base_underground // (35 // number_of_underground_floors)), ''],
+    ['w tym ilość miejsc postojowych w parkingu podziemnym', '', int(base_underground // (35 // number_of_underground_floors)), ''], SEPARATING_LINE,
     ['ilość kondygnacji podziemnych', '', number_of_underground_floors, ''],
     ['powierzchnia użytkowa obsłużona przez parkingi', '', str(round((number_of_parkings * 1000 / parking_place_B), 2))+'m2', ' '],
-    ['współczynnik do liczenia GLA', ' ', 0.69, ' '],
+    ['współczynnik do liczenia GLA', ' ', 0.69, ' '], SEPARATING_LINE,
     ['GLA', '', str(GLA) + 'm2', '']]
+7
 
-df_table= pd.DataFrame(table)
-df_table.columns = ['nazwa parametru', 'wymóg MPZT', 'osiągięte parametry', 'osiągnięte wskaźniki']
-
-print(tabulate((df_table), stralign = "center", headers = [' ', 'nazwa parametru', 'wymóg MPZT', 'osiągięte parametry', 'osiągnięte wskaźniki'], tablefmt="presto"))
+print(tabulate((table), stralign = "center", headers = [' ', 'nazwa parametru', 'wymóg MPZT', 'osiągięte parametry', 'osiągnięte wskaźniki'], tablefmt="simple"),"\n")
