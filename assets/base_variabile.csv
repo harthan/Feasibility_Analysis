@@ -1,0 +1,13 @@
+label,name,unit
+Powierzchnia ca³ej dzia³ki,site_size,m2
+Powierzchnia terenu pod zabudowê,base,m2
+Powierzchnia terenu pod którym mo¿e byæ podziemie,underground_area,m2
+Wspó³czynnik zabudowy,building_factor,
+Wspó³czynnik intensywnoœci zabudowy,intensity_factor,
+Wysokoœæ budynku,building_height,m2
+Wspó³czynnik powierzchni biologicznie-czynnej,green_area_percentage,%
+Wspó³czynnik powierzchni biologicznie-czynnej bezpoœrednio na gruncie,green_area_100_percentage,%
+Liczba wymaganych miejsc postojowych na mieszkanie,parking_place_M,
+Liczba wymaganych miejsc postojowych na 1000m2 powierzchni us³ugowej,parking_place_B,
+Liczba kondygnacji podziemnych,number_of_underground_floors,
+Funkcja (mieszkalna (M) lub biurowa (B)),destiny,M lub B
