@@ -1,4 +1,4 @@
-![screen or GIF of your app](assets\logo.jpg)
+![screen or GIF of your app](./assets/logo.jpg)
 
 # *Feasibility Analysis of Site*
 
@@ -16,8 +16,7 @@ Kto wie moze uda mi się rozwinąć go w przyszłości tak aby program sam ści�
 
 ## Table of Contents | Spis Treści
 
-- [*Feasibility Analysis of Site*](#feasibility-analysis-of-site)
-  - [Analiza Chłonności Działki Inwestycyjnej](#analiza-chłonności-działki-inwestycyjnej)
+  - [Feasibility Analysis of Site | Analiza Chłonności Działki Inwestycyjnej](#feasibility-analysis-of-site)
   - [Table of Contents | Spis Treści](#table-of-contents--spis-treści)
   - [General Information | Podstawowe Informacje](#general-information--podstawowe-informacje)
   - [Technologies Used | Użyte technologie](#technologies-used--użyte-technologie)
@@ -32,7 +31,7 @@ Kto wie moze uda mi się rozwinąć go w przyszłości tak aby program sam ści�
 
 Zazwyczaj taka analiza jest wykonywana przez doświadczonego architekta, który analizuje działkę zawsze wg podobnego schematu:
 
-![screen or GIF of your app](assets\full_analyse.jpg)
+![screen or GIF of your app](./assets/full_analyse.jpg)
 
 Algorytm Analizy opiera się na 3 podstawowych krokach i operacjach pomiędzy nimi. Udostępniony moduł jest drugim z nich. To część większego projektu, nad którym trwają prace. Obliczona powierzchnia wg tego programu może być tylko pomniejszona przez dwa pozostałe moduły, nie ma możliwości aby wzrosła.
 
@@ -63,11 +62,11 @@ List the ready features here:
 
 użytkownik wprowadza dane z Miejscowego Planu Zagospodarowania Przestrzennego oraz własne preferencje.
 
-![screen or GIF of your app](assets\Zrzut_ekranu_dane_wprowadzane.jpg)
+![screen or GIF of your app](./assets/Zrzut_ekranu_dane_wprowadzane.jpg)
 
 Następnie uzyskuje wyliczone paramentry w postaci tabeli:
 
-![screen or GIF of your app](assets\Zrzut_ekranu_wynik.jpg)
+![screen or GIF of your app](./assets/Zrzut_ekranu_wynik.jpg)
 
 ## Project Status | Status Projektu
 
@@ -88,8 +87,4 @@ planowane prace nad całym programem:
 
 Created by [@AldonaKret] - feel free to contact me!
 
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
 
-<!-- You don't have to include all sections - just the one's relevant to your project -->
