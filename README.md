@@ -75,8 +75,7 @@ IN PROGRESS!!!
 ## Room for Improvement | Planowane Aktualizacje
 
 planowane prace nad tym modułem:
-- weryfikacja danych wprowadzonych przez użytkownika
-- możliwość cofnięcia się do poprawienia danych z konkretnego wiersza bez potrzeby wpisywania wszystkiego od nowa.
+- wprowadzenie możliwości podziału terenu na różne funkcje
 - oprócz tabeli z wynikiem powinna pojawić się informacja dlaczego wskaźniki zostały ograniczone
 
 planowane prace nad całym programem:
