@@ -64,69 +64,7 @@ class Building:
     def what_prompt(self, field):
         self.table_rows[field][2] = input(f"{self.table_rows[field][1]} [{self.table_rows[field][3]}]: ")
         return self.table_rows[field][2]
-
-    # def check_parametr(self, field):
-
-    #     try:
-    #         if "," in str(self.table_rows[field][2]):
-    #             self.table_rows[field][2] = self.table_rows[field][2].replace(",", ".")
-
-    #         if self.table_rows[field][2] == "":
-    #             self.table_rows[field][2] = 0.0
-
-    #         if field < 11:
-    #             self.float_value = float(self.table_rows[field][2])
-    #             if self.float_value < 0.0:
-    #                 raise ValueError
-
-    #         if field == 5:
-    #             if self.float_value <= 3.5:
-    #                 print("Podałaś/eś złą wartość. Wysokość budynku musi być większa od 3. Wpisz ją jeszcze raz")
-    #                 self.what_prompt(5)
-    #                 self.check_parametr(5)
-
-    #         if field == 11:
-    #             if self.table_rows[11][2] not in ["M", "m", "B", "b"]:
-    #                 print("""
-    #                 Podałaś/eś złą wartość,
-    #                 jeśli teren jest przeznaczony na mieszkania wpisz "M",
-    #                 jeśli teren jest przeznaczony na usługi lub biura wpisz "B".""")
-
-    #                 self.check_parametr(11)
-    #             else:
-    #                 self.float_value = self.table_rows[11][2].upper()
-
-    #         if self.table_rows[3][2] == 0:
-    #             if self.table_rows[4][2] == 0:
-    #                 print("""
-    #                     jeden z parametrów musi być większy od zera.
-    #                     Popraw 'współczynnik zabudowy' lub 'współczynnik intensywności zabudowy'""")
-    #                 self.what_prompt(3)
-    #                 self.what_prompt(4)
-    #                 self.check_parametr(3)
-    #                 self.check_parametr(4)
-
-    #         if field == 0:
-    #             if float(self.table_rows[0][2]) != max(float(self.table_rows[0][2]), float(self.table_rows[1][2]), float(self.table_rows[2][2])):
-    #                 print("""
-    #                 'Powierchnia działki musi być większa lub równa
-    #                 'terenowi pod zabudowę' oraz większa od
-    #                 'terenu pod którym może być podziemie'""")
-    #                 self.what_prompt(0)
-    #                 self.check_parametr(0)
-    #             elif float(self.table_rows[0][2]) == max(float(self.table_rows[0][2]), float(self.table_rows[1][2]), float(self.table_rows[2][2])):
-    #                 self.float_value = float(self.table_rows[0][2])
-
-    #     except ValueError:
-
-    #         print("Podałaś/eś złą wartość. Podana odowiedź musi być liczbą dodatnią. Wpisz ją jeszcze raz")
-    #         self.what_prompt(field)
-    #         self.check_parametr(field)
-
-    #     # self.check_parking_place_index()
-
-    #     return self.float_value
-
+    
     def check_parametr(self, field):
 
         try:
@@ -371,17 +309,6 @@ class Offices(Building):
     @property
     def parking_place_index(self):
         return self.table_rows[9][2]
-
-    # def check_parking_place_index(self):
-    #     if self.parking_place_index == 0:
-    #         print("""
-    #             Nie Podałaś/eś ilości parkingów wymaganych przez MPZT.
-    #             Jeśli nie są wymagane przez prawo, wpisz liczbę której oczekujesz.
-    #             Musi być to liczba dodatnia""")
-    #         self.what_prompt(9)
-    #         self.table_rows[9][2] = int(self.check_parametr(9))
-    #         return self.table_rows[9][2]
-
 
     def calculate_usable_area(self):
         self.GLA = float(round((self.total_area * 0.89), 2))
