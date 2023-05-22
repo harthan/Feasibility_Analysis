@@ -1,5 +1,8 @@
 ![screen or GIF of your app](./assets/logo.jpg)
 
+<!-- Nie powinno się mieszać dwóch języków w dokumentacji. 
+Albo trzymamy się angielskiego albo polskiego.
+Dalsza część dokumentacji jest po polsku. -->
 # *Feasibility Analysis of Site*
 
 *Have you ever wondered how much floor space for flats or commercial buildings can be obtained from a particular site? My programme, 'Land Investment Absorption Analysis', answers this question.
@@ -10,13 +13,16 @@ The programme is written in Polish, as it is primarily aimed at Polish users who
 ## Analiza Chłonności Działki Inwestycyjnej
 
 Zastanawiałeś się kiedyś, ile powierzchni użytkowej mieszkań lub budynków użytkowych można uzyskać z konkretnego terenu? Mój program, "Analiza chłonności inwestycyjnej gruntu", odpowiada na to pytanie.
+<!-- nie informuj o tym, dlaczego jest w języku polskim. 
+Powiedz lepiej, że produkt jest specjalnie dopiasowany do polskiego odbiorcy -->
 Program jest napisany w języku polskim bo póki co jest skierowany głównie do polskich użytkowników, umiejąch przeczytać i wpisać do programu parametry z miejscowych planów zagospodarowania przestrzennego.
 
 Kto wie moze uda mi się rozwinąć go w przyszłości tak aby program sam ściągał parametry z miejscowych planów i rozpoznawał wielkość terenów, wtedy już nie będzie potrzebna znajomość języka polskiego aby oszacować chłonność działki i program będzie miał sens w innych wersjach językowych.
 
 ## Table of Contents | Spis Treści
 
-  - [Feasibility Analysis of Site | Analiza Chłonności Działki Inwestycyjnej](#feasibility-analysis-of-site)
+- [*Feasibility Analysis of Site*](#feasibility-analysis-of-site)
+  - [Analiza Chłonności Działki Inwestycyjnej](#analiza-chłonności-działki-inwestycyjnej)
   - [Table of Contents | Spis Treści](#table-of-contents--spis-treści)
   - [General Information | Podstawowe Informacje](#general-information--podstawowe-informacje)
   - [Technologies Used | Użyte technologie](#technologies-used--użyte-technologie)
@@ -33,9 +39,11 @@ Zazwyczaj taka analiza jest wykonywana przez doświadczonego architekta, który 
 
 ![screen or GIF of your app](./assets/full_analyse.jpg)
 
+<!-- takie rzeczy pisz w komentarzach w kodzie. Lepiej się czyta przemyślenia przechodząc przez kod :) -->
 Algorytm Analizy opiera się na 3 podstawowych krokach i operacjach pomiędzy nimi. Udostępniony moduł jest drugim z nich. To część większego projektu, nad którym trwają prace. Obliczona powierzchnia wg tego programu może być tylko pomniejszona przez dwa pozostałe moduły, nie ma możliwości aby wzrosła.
 
 Moduł ten oprócz wyliczenia maksymalnych powierzchni całkowitych na podstawie współczynników podanych  prawie miejscowym, sprawdza dwa inne krytyczne parametry, które bardzo często ograniczają inwestycję. Są to:
+
 
 - Ilość powierzchni biologicznie czynnej
 - ilość wymaganych miejsc postojowych w przeliczeniu na metry kwadratowe i ilość poziomów parkingów podziemnych.
@@ -44,12 +52,19 @@ Moduł został wykonany w oparciu o moje piętnastoletnie doswiadczenie w projek
 
 ## Technologies Used | Użyte technologie
 
+<!-- Polecam dopasować się pod wersję minor a nie bugfix tzn - Python 3.11 zamiast 3.11.2 
+Pamiętaj że za niedługo pojawi się kolejna łatka i będziesz musiała poprawiać dokumentację.
+Osobiście uważam, że jeżeli chcesz taki program wykorzystać komercyjnie to musisz podnosić też
+wersję minor. -->
 - Python - version 3.11.2
+<!-- tutaj to samo -->
 - Pandas - version 1.5.3
 - Tabulate - 0.9.0
 
 ## Features | Funkcje
 
+<!-- Nie powinno się mieszać dwóch języków w dokumentacji. 
+Albo trzymamy się angielskiego albo polskiego :) -->
 List the ready features here:
 
 - Obliczenie ile powierzchni użytkowej uda się uzyskać na badanej działce
@@ -70,8 +85,12 @@ Następnie uzyskuje wyliczone paramentry w postaci tabeli:
 
 ## Project Status | Status Projektu
 
+<!-- Wykorzystaj WIP (Work in Progress).
+W ten sposób na git oznaczamy rzeczy do zrobienia. -->
 IN PROGRESS!!!
 
+<!-- Release Notes | Plan Rozwoju 
+Powyżej branżowe nazwy po angielsku i polsku -->
 ## Room for Improvement | Planowane Aktualizacje
 
 planowane prace nad tym modułem:
